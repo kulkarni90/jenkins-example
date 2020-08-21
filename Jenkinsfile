@@ -16,15 +16,9 @@ pipeline {
             steps {
                 withMaven(maven : 'Maven 3.6.3') {
                     sh 'mvn test'
-                }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'Maven 3.6.3') {
-                    sh 'mvn deploy'
+                     echo 'Testing maven project'
+                //ABC indicates the folder name where the pom.xml file resides
+                bat ' mvn -f pom.xml clean install' 
                 }
             }
         }
